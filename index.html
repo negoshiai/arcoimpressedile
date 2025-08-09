@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>.arcoimpresedile S.r.l. | Costruzione e Ristrutturazione d'Eccellenza</title>
+    <meta name="description" content=".arcoimpresedile è il vostro partner unico per servizi completi di costruzione e ristrutturazione, offrendo artigianato meticoloso e integrità architettonica in ogni progetto.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        :root {
+            --prussian-blue: #0B3954;
+            --terracotta: #BF5734;
+            --brushed-gold: #C8A464;
+            --alabaster-white: #F1F1F1;
+            --charcoal: #222222;
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Lora', serif;
+            --section-padding: 8rem 2rem;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            background-color: var(--alabaster-white);
+            color: var(--charcoal);
+            font-family: var(--font-body);
+            line-height: 1.7;
+            overflow-x: hidden;
+            cursor: none;
+        }
+        
+        /* Custom Cursor */
+        .cursor {
+            width: 25px;
+            height: 25px;
+            border: 2px solid var(--terracotta);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: all 0.1s ease;
+            transition-property: width, height, border;
+            z-index: 9999;
+        }
+
+        .cursor-dot {
+            width: 5px;
+            height: 5px;
+            background-color: var(--terracotta);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+        }
+        
+        .cursor.hover-effect {
+            width: 50px;
+            height: 50px;
+            border-color: var(--brushed-gold);
+            background-color: rgba(200, 164, 100, 0.2);
+        }
+
+        /* Typography & Global Styles */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            color: var(--prussian-blue);
+            line-height: 1.2;
+        }
+
+        h1 { font-size: 3.5rem; margin-bottom: 1.5rem; }
+        h2 { font-size: 2.8rem; margin-bottom: 2rem; }
+        h3 { font-size: 1.8rem; margin-bottom: 1.5rem; }
+        p { margin-bottom: 1rem; }
+        a { color: var(--terracotta); text-decoration: none; transition: color 0.3s ease; }
+        a:hover { color: var(--brushed-gold); }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            width: 100%;
+        }
+
+        .section {
+            padding: var(--section-padding);
+            overflow: hidden;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '.';
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--terracotta);
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            text-transform: uppercase;
+            border: 2px solid transparent;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            cursor: none;
+        }
+
+        .btn-primary {
+            background-color: var(--terracotta);
+            color: var(--alabaster-white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--prussian-blue);
+            color: var(--alabaster-white);
+            transform: translateY(-3px);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--prussian-blue);
+            border-color: var(--prussian-blue);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--prussian-blue);
+            color: var(--alabaster-white);
+        }
+
+        .text-gold {
+            color: var(--brushed-gold);
+        }
+
+        /* Scroll Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Header & Navigation */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.5rem 2rem;
+            z-index: 1000;
+            background-color: rgba(241, 241, 241, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            border-bottom: 1px solid transparent;
+        }
+
+        .header.scrolled {
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-bottom: 1px solid rgba(11, 57, 84, 0.1);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--prussian-blue);
+        }
+
+        .logo-dot {
+            color: var(--terracotta);
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-link {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            color: var(--prussian-blue);
+            position: relative;
+            padding-bottom: 5px;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--brushed-gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: var(--prussian-blue);
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Hero Section */
+        #home {
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            padding: 0 2rem;
+            position: relative;
+            background: url('https://images.unsplash.com/photo-1581357823811-a83577539953?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+            color: white;
+        }
+
+        #home::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(11, 57, 84, 0.8), rgba(11, 57, 84, 0.4));
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+        }
+
+        .hero-content h1 {
+            color: var(--alabaster-white);
+            font-size: 4rem;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 500px;
+            color: rgba(241, 241, 241, 0.9);
+        }
+
+        /* Promise Section */
+        #promessa {
+            background-color: var(--prussian-blue);
+            color: var(--alabaster-white);
+        }
+
+        #promessa h2 {
+            color: var(--alabaster-white);
+        }
+
+        .promise-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .promise-content p {
+            font-size: 1.2rem;
+        }
+
+        /* About Us Section */
+        #chi-siamo .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .arch-frame {
+            position: relative;
+            padding: 20px;
+        }
+        
+        .arch-frame::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 5px solid var(--brushed-gold);
+            border-radius: 150px 150px 10px 10px;
+            z-index: -1;
+            transform: scale(1.05);
+        }
+        
+        .about-image img {
+            width: 100%;
+            display: block;
+            border-radius: 130px 130px 5px 5px;
+        }
+
+        .process-section {
+            margin-top: 6rem;
+            text-align: center;
+        }
+        
+        .process-steps {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 3rem;
+            gap: 2rem;
+            position: relative;
+        }
+
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 10%;
+            width: 80%;
+            height: 2px;
+            background-color: rgba(191, 87, 52, 0.3);
+            z-index: -1;
+        }
+
+        .step {
+            flex: 1;
+            max-width: 250px;
+        }
+        
+        .step-icon {
+            width: 80px;
+            height: 80px;
+            background-color: var(--prussian-blue);
+            color: var(--alabaster-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1rem;
+            border: 4px solid var(--alabaster-white);
+            box-shadow: 0 0 0 4px var(--terracotta);
+        }
+
+        .step h4 {
+            color: var(--terracotta);
+            font-weight: 600;
+        }
+
+        /* Services Section */
+        #servizi {
+            background-color: #fff;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .service-card {
+            background: var(--alabaster-white);
+            padding: 2.5rem;
+            text-align: center;
+            border-radius: 10px;
+            border-bottom: 5px solid transparent;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-bottom-color: var(--terracotta);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .service-icon-arch {
+            width: 100px;
+            height: 50px;
+            margin: 0 auto 2rem;
+            background-color: var(--prussian-blue);
+            color: var(--brushed-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            border-radius: 50px 50px 0 0;
+            position: relative;
+        }
+
+        .service-icon-arch::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 8px;
+            height: 8px;
+            background-color: var(--terracotta);
+            border-radius: 50%;
+        }
+
+        /* Portfolio Section */
+        .portfolio-filters {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .filter-btn {
+            background: none;
+            border: none;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            padding: 0.5rem 1.5rem;
+            margin: 0 0.5rem;
+            cursor: pointer;
+            color: var(--charcoal);
+            position: relative;
+        }
+
+        .filter-btn::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--terracotta);
+            transition: width 0.3s;
+        }
+
+        .filter-btn:hover::after, .filter-btn.active::after {
+            width: 100%;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            cursor: pointer;
+            aspect-ratio: 4 / 3;
+            transition: transform 0.3s ease;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(11, 57, 84, 0.9) 0%, rgba(11, 57, 84, 0) 70%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.5rem;
+            color: var(--alabaster-white);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+        
+        .portfolio-overlay-arch {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            background: radial-gradient(circle at 50% -50%, var(--terracotta) 0%, transparent 70%);
+            transform: scaleY(0.6);
+        }
+        
+        .portfolio-item:hover .portfolio-overlay-arch {
+            opacity: 0.3;
+        }
+
+        .portfolio-overlay h4 {
+            color: var(--alabaster-white);
+            font-size: 1.2rem;
+            transform: translateY(20px);
+            transition: transform 0.4s ease;
+        }
+        
+        .portfolio-overlay span {
+            font-family: var(--font-body);
+            font-style: italic;
+            transform: translateY(20px);
+            transition: transform 0.4s ease 0.1s;
+        }
+
+        .portfolio-item:hover .portfolio-overlay h4,
+        .portfolio-item:hover .portfolio-overlay span {
+            transform: translateY(0);
+        }
+
+        /* Testimonials Section */
+        #dicono-di-noi {
+            background-color: var(--prussian-blue);
+        }
+
+        #dicono-di-noi .section-title,
+        #dicono-di-noi .section-title h2 {
+            color: var(--alabaster-white);
+        }
+        
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            height: 250px;
+        }
+
+        .testimonial-slide {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            visibility: hidden;
+        }
+        
+        .testimonial-slide.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .testimonial-quote {
+            font-size: 1.3rem;
+            font-style: italic;
+            color: var(--alabaster-white);
+            margin-bottom: 1.5rem;
+        }
+        
+        .testimonial-quote::before {
+            content: '“';
+            font-size: 4rem;
+            line-height: 0;
+            color: var(--brushed-gold);
+            margin-right: 0.5rem;
+            position: relative;
+            top: 1rem;
+        }
+
+        .testimonial-author {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            color: var(--brushed-gold);
+        }
+
+        .slider-controls {
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            background-color: rgba(241, 241, 241, 0.5);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .slider-dot.active {
+            background-color: var(--brushed-gold);
+        }
+
+        /* Contact Section & CTA Banner */
+        .cta-banner {
+            padding: 5rem 2rem;
+            background: linear-gradient(rgba(11, 57, 84, 0.9), rgba(11, 57, 84, 0.9)), url('https://images.unsplash.com/photo-1512453989395-8a2a02dd7129?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80') center center/cover;
+            background-attachment: fixed;
+            text-align: center;
+            color: var(--alabaster-white);
+        }
+        
+        .cta-banner h2 {
+            color: var(--alabaster-white);
+        }
+
+        #contatti .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+        
+        .contact-info h3, .contact-form h3 {
+            position: relative;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--brushed-gold);
+            display: inline-block;
+        }
+
+        .contact-info ul {
+            list-style: none;
+            margin-top: 2rem;
+        }
+        
+        .contact-info li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-info i {
+            color: var(--terracotta);
+            font-size: 1.2rem;
+            margin-right: 1rem;
+            width: 25px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            background-color: #fff;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--terracotta);
+            box-shadow: 0 0 0 3px rgba(191, 87, 52, 0.2);
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--prussian-blue);
+            color: var(--alabaster-white);
+            padding: 4rem 2rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-family: var(--font-heading);
+            color: var(--alabaster-white);
+        }
+        
+        .footer-nav {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .footer-nav a {
+            color: var(--alabaster-white);
+            opacity: 0.8;
+        }
+
+        .footer-nav a:hover {
+            opacity: 1;
+            color: var(--brushed-gold);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            color: var(--alabaster-white);
+            font-size: 1.5rem;
+            opacity: 0.8;
+        }
+        
+        .social-links a:hover {
+            opacity: 1;
+            color: var(--brushed-gold);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(241, 241, 241, 0.2);
+            padding-top: 2rem;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            h1 { font-size: 3rem; }
+            h2 { font-size: 2.2rem; }
+            .section { padding: 6rem 1.5rem; }
+            #contatti .container { grid-template-columns: 1fr; }
+            #chi-siamo .container { grid-template-columns: 1fr; text-align: center; }
+            .about-image { margin-bottom: 2rem; }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .hero-content h1 { font-size: 3rem; }
+            
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 0;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                background-color: var(--alabaster-white);
+                width: 100%;
+                height: 100vh;
+                text-align: center;
+                transition: 0.3s;
+                gap: 3rem;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-link {
+                font-size: 1.5rem;
+                color: var(--prussian-blue);
+            }
+            
+            .hamburger {
+                display: block;
+            }
+
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+            
+            .process-steps {
+                flex-direction: column;
+                align-items: center;
+                gap: 3rem;
+            }
+            .process-steps::before { display: none; }
+        }
+
+        @media (max-width: 480px) {
+            .section { padding: 4rem 1rem; }
+            .container { padding: 0 1rem; }
+            .hero-content h1 { font-size: 2.2rem; }
+            .hero-content p { font-size: 1rem; }
+            .btn { padding: 0.8rem 1.8rem; }
+            .portfolio-grid { grid-template-columns: 1fr; }
+            .footer-nav { flex-direction: column; gap: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cursor"></div>
+    <div class="cursor-dot"></div>
+
+    <header class="header">
+        <nav class="nav">
+            <a href="#home" class="logo"><span class="logo-dot">.</span>arcoimpresedile</a>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#chi-siamo" class="nav-link">Chi Siamo</a></li>
+                <li><a href="#servizi" class="nav-link">Servizi</a></li>
+                <li><a href="#realizzazioni" class="nav-link">Realizzazioni</a></li>
+                <li><a href="#contatti" class="nav-link">Contatti</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+
+        <section id="home">
+            <div class="hero-content">
+                <h1>Costruzione e Ristrutturazione d'Eccellenza<span class="logo-dot">.</span></h1>
+                <p>La vostra visione, realizzata con maestria. Siamo il partner di fiducia per progetti che uniscono design, funzionalità e qualità senza compromessi.</p>
+                <a href="#realizzazioni" class="btn btn-primary">Scopri i Nostri Lavori</a>
+            </div>
+        </section>
+        
+        <section id="promessa" class="section">
+            <div class="container promise-content reveal">
+                <h2>Dal Progetto alla Consegna: Il Vostro <span class="text-gold">Partner Unico.</span></h2>
+                <p>.arcoimpresedile è il vostro unico punto di riferimento per servizi edili completi. Gestiamo ogni fase con meticolosa attenzione ai dettagli, assicurando integrità architettonica e artigianato superiore in ogni progetto.</p>
+            </div>
+        </section>
+
+        <section id="chi-siamo" class="section">
+            <div class="container">
+                <div class="about-image reveal">
+                    <div class="arch-frame">
+                        <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Team di costruzione al lavoro">
+                    </div>
+                </div>
+                <div class="about-text reveal">
+                    <h2 class="section-title" style="text-align:left; margin-bottom: 2rem;">La Nostra Storia</h2>
+                    <h3>Passione, Precisione, Perfezione.</h3>
+                    <p>Fondata sulla passione per l'edilizia di qualità, .arcoimpresedile nasce con l'obiettivo di trasformare gli spazi e realizzare i sogni dei nostri clienti. Crediamo che ogni mattone, ogni finitura, debba riflettere il nostro impegno per l'eccellenza.</p>
+                    <p>La nostra filosofia si basa su tre pilastri: <strong class="text-gold">ascolto</strong> del cliente, <strong class="text-gold">rispetto</strong> dei tempi e <strong class="text-gold">cura</strong> del dettaglio. Questo ci permette di costruire non solo edifici, ma relazioni durature basate sulla fiducia.</p>
+                </div>
+            </div>
+            <div class="process-section reveal">
+                <h2 class="section-title">Il Nostro Processo</h2>
+                <div class="process-steps">
+                    <div class="step">
+                        <div class="step-icon"><i class="fa-solid fa-comments"></i></div>
+                        <h4>1. Consulenza</h4>
+                        <p>Ascoltiamo le vostre idee e necessità per definire insieme gli obiettivi del progetto.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-icon"><i class="fa-solid fa-ruler-combined"></i></div>
+                        <h4>2. Progettazione</h4>
+                        <p>Sviluppiamo un piano dettagliato, unendo estetica, funzionalità e soluzioni tecniche all'avanguardia.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-icon"><i class="fa-solid fa-hard-hat"></i></div>
+                        <h4>3. Costruzione</h4>
+                        <p>Realizziamo il progetto con manodopera specializzata, materiali di prima scelta e supervisione costante.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-icon"><i class="fa-solid fa-key"></i></div>
+                        <h4>4. Consegna</h4>
+                        <p>Completiamo il lavoro a regola d'arte, consegnandovi uno spazio pronto da vivere, nei tempi concordati.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="servizi" class="section">
+            <div class="container">
+                <h2 class="section-title">I Nostri Servizi</h2>
+                <div class="services-grid">
+                    <div class="service-card reveal">
+                        <div class="service-icon-arch"><i class="fa-solid fa-home-alt"></i></div>
+                        <h3>Ristrutturazioni</h3>
+                        <p>Diamo nuova vita ai vostri spazi, da piccoli interventi a ristrutturazioni complete, con soluzioni su misura.</p>
+                    </div>
+                    <div class="service-card reveal" style="transition-delay: 0.1s;">
+                        <div class="service-icon-arch"><i class="fa-solid fa-building"></i></div>
+                        <h3>Nuove Costruzioni</h3>
+                        <p>Costruiamo da zero edifici residenziali e commerciali, seguendo i più alti standard di qualità e sostenibilità.</p>
+                    </div>
+                    <div class="service-card reveal" style="transition-delay: 0.2s;">
+                        <div class="service-icon-arch"><i class="fa-solid fa-tools"></i></div>
+                        <h3>Manutenzioni</h3>
+                        <p>Offriamo servizi di manutenzione ordinaria e straordinaria per preservare il valore e la sicurezza del vostro immobile.</p>
+                    </div>
+                    <div class="service-card reveal" style="transition-delay: 0.3s;">
+                        <div class="service-icon-arch"><i class="fa-solid fa-drafting-compass"></i></div>
+                        <h3>Progettazione</h3>
+                        <p>Il nostro team tecnico vi affianca nella fase di progettazione per trasformare le idee in progetti concreti e realizzabili.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="realizzazioni" class="section">
+            <div class="container">
+                <h2 class="section-title">Le Nostre Realizzazioni</h2>
+                <div class="portfolio-filters reveal">
+                    <button class="filter-btn active" data-filter="all">Tutti</button>
+                    <button class="filter-btn" data-filter="residenziale">Residenziale</button>
+                    <button class="filter-btn" data-filter="commerciale">Commerciale</button>
+                    <button class="filter-btn" data-filter="ristrutturazione">Ristrutturazione</button>
+                </div>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item reveal" data-category="residenziale ristrutturazione">
+                        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Villa moderna">
+                        <div class="portfolio-overlay-arch"></div>
+                        <div class="portfolio-overlay">
+                            <h4>Villa Privata - Como</h4>
+                            <span>Ristrutturazione completa</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-item reveal" data-category="commerciale">
+                        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2232&q=80" alt="Uffici moderni">
+                        <div class="portfolio-overlay-arch"></div>
+                        <div class="portfolio-overlay">
+                            <h4>Uffici Direzionali - Milano</h4>
+                            <span>Nuova Costruzione</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-item reveal" data-category="residenziale">
+                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Appartamento di lusso">
+                         <div class="portfolio-overlay-arch"></div>
+                        <div class="portfolio-overlay">
+                            <h4>Attico di Lusso - Varese</h4>
+                            <span>Interior Design & Finiture</span>
+                        </div>
+                    </div>
+                    <div class="portfolio-item reveal" data-category="ristrutturazione">
+                        <img src="https://images.unsplash.com/photo-1616046229478-9901c5536a45?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1780&q=80" alt="Interno ristrutturato">
+                         <div class="portfolio-overlay-arch"></div>
+                        <div class="portfolio-overlay">
+                            <h4>Recupero Sottotetto - Lecco</h4>
+                            <span>Ristrutturazione</span>
+                        </div>
+                    </div>
+                     <div class="portfolio-item reveal" data-category="commerciale ristrutturazione">
+                        <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Boutique hotel">
+                         <div class="portfolio-overlay-arch"></div>
+                        <div class="portfolio-overlay">
+                            <h4>Boutique Hotel - Lago Maggiore</h4>
+                            <span>Ristrutturazione e Arredo</span>
+                        </div>
+                    </div>
+                     <div class="portfolio-item reveal" data-category="residenziale">
+                        <img src="https://images.unsplash.com/photo-1613553423758-d8425113ab43?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" alt="Casa con piscina">
+                         <div class="portfolio-overlay-arch"></div>
+                        <div class="portfolio-overlay">
+                            <h4>Complesso Residenziale - Monza</h4>
+                            <span>Nuova Costruzione</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="dicono-di-noi" class="section">
+            <div class="container reveal">
+                <h2 class="section-title">Dicono di Noi</h2>
+                <div class="testimonial-slider">
+                    <div class="testimonial-slide active">
+                        <p class="testimonial-quote">Professionalità, puntualità e una qualità del lavoro che ha superato le nostre aspettative. .arcoimpresedile è una garanzia.</p>
+                        <p class="testimonial-author">Mario & Luisa Rossi</p>
+                    </div>
+                    <div class="testimonial-slide">
+                        <p class="testimonial-quote">Hanno trasformato un vecchio ufficio in uno spazio moderno e funzionale. Team eccezionale e sempre disponibile.</p>
+                        <p class="testimonial-author">Arch. G. Bianchi, Studio Progetti</p>
+                    </div>
+                    <div class="testimonial-slide">
+                        <p class="testimonial-quote">La cura dei dettagli è impressionante. Hanno realizzato la casa dei nostri sogni rispettando budget e tempistiche.</p>
+                        <p class="testimonial-author">Famiglia Colombo</p>
+                    </div>
+                </div>
+                 <div class="slider-controls">
+                    <div class="slider-dot active" data-slide="0"></div>
+                    <div class="slider-dot" data-slide="1"></div>
+                    <div class="slider-dot" data-slide="2"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-banner">
+            <div class="container reveal">
+                <h2>Avete un progetto in mente?</h2>
+                <p style="margin: 1.5rem 0 2rem;">Parliamone insieme. Siamo pronti ad ascoltarvi e a proporvi la soluzione migliore.</p>
+                <a href="#contatti" class="btn btn-primary">Richiedi un Preventivo Gratuito</a>
+            </div>
+        </section>
+
+        <section id="contatti" class="section">
+            <div class="container">
+                <div class="contact-info reveal">
+                    <h3>Contatti e Sede</h3>
+                    <p>Venite a trovarci o contattateci per qualsiasi informazione. Il nostro team è a vostra completa disposizione.</p>
+                    <ul>
+                        <li><i class="fa-solid fa-map-marker-alt"></i><span>Via Roma, 123 - 20121 Milano (MI), Italia</span></li>
+                        <li><i class="fa-solid fa-phone"></i><a href="tel:+390212345678">+39 02 1234 5678</a></li>
+                        <li><i class="fa-solid fa-envelope"></i><a href="mailto:info@arcoimpresaedile.it">info@arcoimpresaedile.it</a></li>
+                        <li><i class="fa-solid fa-file-invoice"></i><span>P.IVA: 12345678901</span></li>
+                    </ul>
+                </div>
+                <div class="contact-form reveal">
+                    <h3>Scriveteci</h3>
+                    <form action="#">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Il vostro nome" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="La vostra email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" name="phone" placeholder="Numero di telefono">
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" placeholder="Il vostro messaggio" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Invia Richiesta</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <a href="#home" class="footer-logo"><span class="logo-dot">.</span>arcoimpresedile</a>
+                <ul class="footer-nav">
+                    <li><a href="#chi-siamo">Chi Siamo</a></li>
+                    <li><a href="#servizi">Servizi</a></li>
+                    <li><a href="#realizzazioni">Realizzazioni</a></li>
+                    <li><a href="#contatti">Contatti</a></li>
+                </ul>
+                <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 .arcoimpresedile S.r.l. Tutti i diritti riservati.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Cursor effect
+            const cursor = document.querySelector('.cursor');
+            const cursorDot = document.querySelector('.cursor-dot');
+            document.addEventListener('mousemove', e => {
+                cursor.setAttribute("style", "top: "+(e.pageY)+"px; left: "+(e.pageX)+"px;")
+                cursorDot.setAttribute("style", "top: "+(e.pageY)+"px; left: "+(e.pageX)+"px;")
+            });
+
+            document.querySelectorAll('a, button, .portfolio-item').forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursor.classList.add('hover-effect');
+                });
+                el.addEventListener('mouseleave', () => {
+                    cursor.classList.remove('hover-effect');
+                });
+            });
+
+            // Sticky Header
+            const header = document.querySelector('.header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // Mobile Menu
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+
+            navLinks.forEach(link => link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+            }));
+
+            // Scroll Reveal Animation
+            const revealElements = document.querySelectorAll('.reveal');
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            revealElements.forEach(el => {
+                revealObserver.observe(el);
+            });
+
+            // Portfolio Filter
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+
+                    const filter = btn.getAttribute('data-filter');
+
+                    portfolioItems.forEach(item => {
+                        item.style.display = 'none';
+                        if (filter === 'all' || item.getAttribute('data-category').includes(filter)) {
+                            // Using a short timeout to allow the display:none to register before transitioning
+                            setTimeout(() => {
+                                item.style.display = 'block';
+                            }, 1);
+                        }
+                    });
+                });
+            });
+            
+            // Testimonial Slider
+            const slides = document.querySelectorAll('.testimonial-slide');
+            const sliderDots = document.querySelectorAll('.slider-dot');
+            let currentSlide = 0;
+            let slideInterval = setInterval(nextSlide, 5000);
+
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    slide.classList.remove('active');
+                    sliderDots[i].classList.remove('active');
+                });
+                slides[index].classList.add('active');
+                sliderDots[index].classList.add('active');
+                currentSlide = index;
+            }
+
+            function nextSlide() {
+                let next = (currentSlide + 1) % slides.length;
+                showSlide(next);
+            }
+
+            sliderDots.forEach(dot => {
+                dot.addEventListener('click', () => {
+                    clearInterval(slideInterval);
+                    showSlide(parseInt(dot.dataset.slide));
+                    slideInterval = setInterval(nextSlide, 5000);
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
